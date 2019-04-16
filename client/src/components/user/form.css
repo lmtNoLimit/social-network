@@ -1,0 +1,26 @@
+.wrapper {
+  height: 100vh;
+  background: url(../../background.jpg);
+  background-position: center;
+  background-size: cover;
+}
+.form label {
+  font-weight: 500;
+}
+.form {
+  border-radius: 10px;
+  max-width: 23rem;
+  padding: 30px 40px;
+  background: #fff;
+}
+.form p {
+  font-size: 14px;
+  padding: 7px 0;
+  text-align: center;
+}
+.form button {
+  width: 100%;
+}
+::placeholder {
+  font-size: 14px;
+}
