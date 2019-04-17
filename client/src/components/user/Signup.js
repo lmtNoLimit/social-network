@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn } from 'mdbreact';
-import { Redirect, Link } from 'react-router-dom';
+import { MDBContainer, MDBInput, MDBBtn } from 'mdbreact';
+import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 import swal from 'sweetalert';
+import NavBar from './../common/NavBar';
 
 class Signup extends Component {
   constructor(props) {
@@ -52,50 +53,46 @@ class Signup extends Component {
   }
   
   renderSignupForm = (name, email, password) => (
-    <MDBContainer>
-      <MDBRow>
-        <MDBCol md="6">
-          <form>
-            <p className="h5 text-center mb-4">Sign up</p>
-            <div className="grey-text">
-              <MDBInput
-                label="Your name"
-                icon="user"
-                group
-                type="text"
-                validate
-                error="wrong"
-                success="right"
-                onChange={this.handleChange("name")} 
-                value={name}
-              />
-              <MDBInput
-                label="Your email"
-                icon="envelope"
-                group
-                type="email"
-                validate
-                error="wrong"
-                success="right"
-                onChange={this.handleChange("email")} 
-                value={email}
-              />
-              <MDBInput
-                label="Your password"
-                icon="lock"
-                group
-                type="password"
-                validate
-                onChange={this.handleChange("password")} 
-                value={password}          
-              />
-            </div>
-            <div className="text-center">
-              <MDBBtn onClick={this.handleSubmit}>Register</MDBBtn>
-            </div>
-          </form>
-        </MDBCol>
-      </MDBRow>
+    <MDBContainer className="wrapper">
+      <form>
+        <p className="h4 text-center mb-5">Sign up</p>
+        <div className="grey-text">
+          <MDBInput
+            label="Your name"
+            icon="user"
+            group
+            type="text"
+            validate
+            error="wrong"
+            success="right"
+            onChange={this.handleChange("name")} 
+            value={name}
+          />
+          <MDBInput
+            label="Your email"
+            icon="envelope"
+            group
+            type="email"
+            validate
+            error="wrong"
+            success="right"
+            onChange={this.handleChange("email")} 
+            value={email}
+          />
+          <MDBInput
+            label="Your password"
+            icon="lock"
+            group
+            type="password"
+            validate
+            onChange={this.handleChange("password")} 
+            value={password}          
+          />
+        </div>
+        <div className="text-center">
+          <MDBBtn onClick={this.handleSubmit}>Register</MDBBtn>
+        </div>
+      </form>
     </MDBContainer>
   )
 
@@ -106,6 +103,7 @@ class Signup extends Component {
     }
     return (
       <div>
+        <NavBar />
         <React.Fragment>
           {this.renderSignupForm(name, email, password)}
         </React.Fragment>

@@ -1,12 +1,7 @@
 import React, { Component } from 'react';
 import {
-  Collapse,
-  Navbar,
-  NavbarToggler,
-  Nav,
-  NavItem,
-} from 'reactstrap';
-import logo from '../../logo.svg';
+  MDBNavbar, MDBNavbarNav, MDBNavItem, MDBNavbarToggler, MDBCollapse
+  } from "mdbreact";
 import { Link } from 'react-router-dom';
 
 class NavBar extends Component {
@@ -24,20 +19,22 @@ class NavBar extends Component {
   render() {
     return (
       <div>
-        <Navbar className="fixed-top" color="dark" dark expand="sm">
-          <Link className="navbar-brand" to="/"><img src={logo} alt="logo"/></Link>
-          <NavbarToggler onClick={this.toggle} />
-          <Collapse isOpen={this.state.isOpen} navbar>
-            <Nav className="ml-auto" navbar>
-              <NavItem>
-                <Link className="nav-link" to="/signin">Sign In</Link>
-              </NavItem>
-              <NavItem>
-                <Link className="nav-link" to="/signup">Sign Up</Link>                
-              </NavItem>
-            </Nav>
-          </Collapse>
-        </Navbar>
+        <MDBNavbar color="indigo" dark expand="md">
+        <Link to="/">
+          <strong className="white-text">LOGO</strong>
+        </Link>
+        <MDBNavbarToggler onClick={this.toggleCollapse} />
+        <MDBCollapse id="navbarCollapse3" isOpen={this.state.isOpen} navbar>
+          <MDBNavbarNav right>
+            <MDBNavItem>
+              <Link className="nav-link" to="/signin">Sign in</Link>
+            </MDBNavItem>
+            <MDBNavItem>
+              <Link className="nav-link" to="/signup">Sign up</Link>
+            </MDBNavItem>            
+          </MDBNavbarNav>
+        </MDBCollapse>
+      </MDBNavbar>
       </div>
     );
   }
