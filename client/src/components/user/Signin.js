@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import { Button, Form, FormGroup, Label, Input, Spinner } from 'reactstrap';
+import { MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn } from 'mdbreact';
 import { Redirect, Link } from 'react-router-dom';
 import axios from 'axios';
 import swal from 'sweetalert';
-
 
 class Signin extends Component {
   constructor(props) {
@@ -47,48 +46,47 @@ class Signin extends Component {
   }
   
   renderSigninForm = (email, password) => (
-    <Form className="form">
-      <h2>Sign in</h2>
-      <FormGroup>
-        <Label for="email">Email</Label>
-        <Input
-          onChange={this.handleChange("email")} 
-          type="email" 
-          name="email" 
-          id="email" 
-          placeholder="ex. lmt151099@gmail.com"
-          value={email}
-        />
-      </FormGroup>
-      <FormGroup>
-        <Label for="password">Password</Label>
-        <Input 
-          onChange={this.handleChange("password")} 
-          type="password"
-          name="password"
-          id="password"
-          placeholder="ex. lmt99999"
-          value={password}
-        />
-      </FormGroup>      
-      <Button onClick={this.handleSubmit} color="primary">Sign in</Button>
-      {this.state.loading ? 
-          <div className="text-center mt-2">
-            <Spinner type="grow" color="primary" />
-            <Spinner type="grow" color="info" />
-            <Spinner type="grow" color="success" />
-            <Spinner type="grow" color="danger" />
-            <Spinner type="grow" color="warning" />
-          </div> : ""}
-      <p>Don't have an account? <Link to="/signup">Sign up</Link> here</p>
-    </Form>
+    <MDBContainer>
+      <MDBRow>
+        <MDBCol md="6">
+          <form>
+            <p className="h5 text-center mb-4">Sign in</p>
+            <div className="grey-text">
+              <MDBInput
+                label="Type your email"
+                icon="envelope"
+                group
+                type="email"
+                validate
+                error="wrong"
+                success="right"
+                onChange={this.handleChange("email")}
+                value={email}
+              />
+              <MDBInput
+                label="Type your password"
+                icon="lock"
+                group
+                type="password"
+                validate
+                onChange={this.handleChange("password")}
+                value={password}
+              />
+            </div>
+            <div className="text-center">
+              <MDBBtn onClick={this.handleSubmit}>Login</MDBBtn>
+            </div>
+          </form>
+        </MDBCol>
+      </MDBRow>
+    </MDBContainer>    
   )
 
   render() {
     const { email, password, redirect } = this.state;
     if(redirect) return <Redirect to="/" />
     return (
-      <div className="d-flex justify-content-center align-items-center wrapper">
+      <div className="d-flex justify-content-center align-items-center">
         <React.Fragment>
           {this.renderSigninForm(email, password)}
         </React.Fragment>
