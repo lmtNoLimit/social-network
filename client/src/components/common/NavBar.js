@@ -19,7 +19,7 @@ class NavBar extends Component {
   
   render() {
     return (
-      <div className="menu">
+      <div>
         <MDBNavbar color="default-color" dark expand="md" fixed="top">
           <Link to="/">
             <strong className="white-text">LOGO</strong>
