@@ -11,7 +11,7 @@ class NavBar extends Component {
       isOpen: false
     };
   }
-  toggle = () => {
+  toggleCollapse = () => {
     this.setState({
       isOpen: !this.state.isOpen
     });
@@ -32,7 +32,6 @@ class NavBar extends Component {
               </MDBNavItem>
               <MDBNavItem>
                 <Link className="nav-link" to="/signup">Sign up</Link>
-                {JSON.stringify(this.props.history)}
               </MDBNavItem>            
             </MDBNavbarNav>
           </MDBCollapse>
