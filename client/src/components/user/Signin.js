@@ -56,9 +56,6 @@ class Signin extends Component {
             icon="envelope"
             group
             type="email"
-            validate
-            error="wrong"
-            success="right"
             onChange={this.handleChange("email")}
             value={email}
           />
@@ -67,7 +64,6 @@ class Signin extends Component {
             icon="lock"
             group
             type="password"
-            validate
             onChange={this.handleChange("password")}
             value={password}
           />
@@ -76,7 +72,7 @@ class Signin extends Component {
           <MDBBtn onClick={this.handleSubmit}>Login</MDBBtn>
         </div>
       </form>
-    </MDBContainer>    
+    </MDBContainer>
   )
 
   render() {

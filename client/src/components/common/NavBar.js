@@ -16,25 +16,27 @@ class NavBar extends Component {
       isOpen: !this.state.isOpen
     });
   }
+  
   render() {
     return (
-      <div>
-        <MDBNavbar color="indigo" dark expand="md">
-        <Link to="/">
-          <strong className="white-text">LOGO</strong>
-        </Link>
-        <MDBNavbarToggler onClick={this.toggleCollapse} />
-        <MDBCollapse id="navbarCollapse3" isOpen={this.state.isOpen} navbar>
-          <MDBNavbarNav right>
-            <MDBNavItem>
-              <Link className="nav-link" to="/signin">Sign in</Link>
-            </MDBNavItem>
-            <MDBNavItem>
-              <Link className="nav-link" to="/signup">Sign up</Link>
-            </MDBNavItem>            
-          </MDBNavbarNav>
-        </MDBCollapse>
-      </MDBNavbar>
+      <div className="menu">
+        <MDBNavbar color="default-color" dark expand="md" fixed="top">
+          <Link to="/">
+            <strong className="white-text">LOGO</strong>
+          </Link>
+          <MDBNavbarToggler onClick={this.toggleCollapse} />
+          <MDBCollapse id="navbarCollapse3" isOpen={this.state.isOpen} navbar>
+            <MDBNavbarNav right>
+              <MDBNavItem>
+                <Link className="nav-link" to="/signin">Sign in</Link>
+              </MDBNavItem>
+              <MDBNavItem>
+                <Link className="nav-link" to="/signup">Sign up</Link>
+                {JSON.stringify(this.props.history)}
+              </MDBNavItem>            
+            </MDBNavbarNav>
+          </MDBCollapse>
+        </MDBNavbar>
       </div>
     );
   }

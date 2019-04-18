@@ -62,9 +62,6 @@ class Signup extends Component {
             icon="user"
             group
             type="text"
-            validate
-            error="wrong"
-            success="right"
             onChange={this.handleChange("name")} 
             value={name}
           />
@@ -73,9 +70,6 @@ class Signup extends Component {
             icon="envelope"
             group
             type="email"
-            validate
-            error="wrong"
-            success="right"
             onChange={this.handleChange("email")} 
             value={email}
           />
@@ -84,7 +78,6 @@ class Signup extends Component {
             icon="lock"
             group
             type="password"
-            validate
             onChange={this.handleChange("password")} 
             value={password}          
           />
