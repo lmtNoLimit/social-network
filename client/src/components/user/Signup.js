@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { MDBContainer, MDBInput, MDBBtn } from 'mdbreact';
 import { Redirect } from 'react-router-dom';
-import axios from 'axios';
 import swal from 'sweetalert';
 import NavBar from './../common/NavBar';
+import { signup } from './../../auth/auth';
 
 class Signup extends Component {
   constructor(props) {
@@ -14,31 +14,8 @@ class Signup extends Component {
       password: "",
       err: "",
       redirect: false,
-      loading: false
     }
-  }
-
-  signup = user => {
-    axios.post('http://localhost:3001/signup', { 
-      name: user.name,
-      email: user.email,
-      password: user.password
-    })
-    .then(res => {
-      this.setState({
-        redirect: true,
-        loading: false,
-      });
-      swal("Congratulation!", `${res.data.message}`, "success");
-    })
-    .catch(err => {
-      this.setState({ 
-        err: err.response.data.error, 
-        loading: false 
-      });
-      swal("Oops!", `${this.state.err}`, "error");
-    })
-  }
+  }  
 
   handleChange = field => e => {
     this.setState({ [field]: e.target.value });
@@ -46,10 +23,16 @@ class Signup extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    this.setState({loading: true});
     const { name, email, password } = this.state;
     const user = { name, email, password };
-    this.signup(user);
+    signup(user)
+    .then(() => {
+      this.setState({ redirect: true });
+    })
+    .catch(err => {
+      this.setState({ err: err.response.data.error });
+      swal("Oops!", `${this.state.err}`, "error");
+    });
   }
   
   renderSignupForm = (name, email, password) => (
