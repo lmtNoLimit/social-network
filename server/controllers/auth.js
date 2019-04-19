@@ -23,7 +23,7 @@ exports.signin = (req, res) => {
       return res.status(400).json({ error: "Invalid email or password" });
     }
     // if has user -> auth
-    // if() {
+    // if(!user.comparePassword(password)) {
     //   return res.status(400).json({ error });
     // }
     // generate jwt
@@ -38,7 +38,7 @@ exports.signin = (req, res) => {
 
 exports.signout = (req, res) => {
   res.clearCookie("token");
-  return res.json({messeage: "You are signed out!"});
+  return res.json({message: "You are signed out!"});
 }
 
 exports.requireSignin = expressJwt({
